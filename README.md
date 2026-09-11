@@ -4,7 +4,7 @@
 
 ### by [Moiz Solutions](https://tools.moiz.solutions)
 
-[![Version](https://img.shields.io/badge/version-2.1.0-blue?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.1-blue?style=flat-square)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Schema](https://img.shields.io/badge/schema-2.1-blue?style=flat-square)](skill/references/data-model/SCHEMA.md)
 [![Policy](https://img.shields.io/badge/Etsy_policy-August_2026-green?style=flat-square)](skill/references/policies.md)
@@ -12,6 +12,8 @@
 [![Status](https://img.shields.io/badge/status-stable-success?style=flat-square)]()
 
 **Honest, evidence-driven Etsy SEO optimization for AI tools.** Paste a listing → get back an optimized one. No shop registration, no setup forms, no nonsense.
+
+> 💡 **Prefer point-and-click over prompts?** The same team builds [SellWren](https://sellwren.com) — free Etsy seller tools (tag verifier, title builder, IP scanner, description builder) plus a live shop dashboard on the official Etsy API. No account needed for the free tools.
 
 **The honest version of what most "Etsy SEO tools" pretend to be.**
 
@@ -276,6 +278,25 @@ Neither depends on the other; use either independently or together.
 
 ---
 
+## 🛠️ Related: SellWren
+
+Want these rules applied to your real listings automatically, without prompting? [**SellWren**](https://sellwren.com) is a free Etsy seller toolkit from the same team that implements this system's exact checks as instant point-and-click tools:
+
+| This repo (AI skill) | SellWren free tool |
+|---|---|
+| 13-tag verification (13 tags ≤20 chars, phrase overlap) | **Tag Verifier** |
+| Title checks (primary keyword in first 40 chars, 6–14 words, no subjective words) | **Title Builder** |
+| Trademark stoplist scan | **IP Scanner** |
+| 8-block description format | **Description Builder** |
+
+- **Free tools:** [sellwren.com/tools](https://sellwren.com/tools) — no account, nothing stored
+- **Live dashboard demo:** [sellwren.com/demo-dashboard](https://sellwren.com/demo-dashboard) — income, winners, listing health, honest profit math from real receipts
+- **SellWren for Desktop** (one-time license, your data stays on your machine) is coming soon — join the waitlist at [sellwren.com](https://sellwren.com)
+
+The AI skill and SellWren share the same rulebooks and 2026 Etsy policy alignment. Use the skill for deep research and listing creation; use SellWren for daily shop monitoring and quick checks.
+
+---
+
 ## ❓ FAQ
 
 **Q: Is there really a free path?**  
@@ -332,6 +353,8 @@ This system is opinionated and built around the 2026 Etsy algorithm. If Etsy cha
 - Additions to `skill/references/playbooks/trademark-stoplist.md` for newly trademarked franchises
 - New playbooks for genuinely new operational patterns
 
+Maintainers pushing from a local clone should enable the leak-guard hook once: `git config core.hooksPath .githooks`
+
 Avoid:
 - Adding new "modes" — the system is intentionally 2-mode
 - Re-introducing shop concept / multi-shop architecture
@@ -344,6 +367,7 @@ Avoid:
 Engineered and maintained by **Moiz Zoaib Ali**:
 - **Personal Website:** [moiz.solutions](https://moiz.solutions)
 - **AI Tools Directory:** [tools.moiz.solutions](https://tools.moiz.solutions)
+- **Free Etsy Seller Tools:** [SellWren](https://sellwren.com)
 - **GitHub Profile:** [@moiz-za](https://github.com/moiz-za)
 
 ---
@@ -356,7 +380,7 @@ MIT — Copyright (c) 2026 Moiz Zoaib Ali. Use freely, modify, share. No warrant
 
 <div align="center">
 
-**Built by [Moiz Solutions](https://tools.moiz.solutions)** · Report issues on [GitHub](https://github.com/moiz-za/etsy-seller-seo-system/issues)
+**Built by [Moiz Solutions](https://tools.moiz.solutions)** · Free Etsy tools: [SellWren](https://sellwren.com) · Report issues on [GitHub](https://github.com/moiz-za/etsy-seller-seo-system/issues)
 
 *Built with stubborn opinions about Etsy SEO and zero tolerance for advice that doesn't work.*
 

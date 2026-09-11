@@ -4,6 +4,20 @@ All notable changes to the Etsy Seller System.
 
 Schema versions are bumped only when state file formats change in ways that require migration.
 
+## [2.1.1] — September 2026
+
+**Maintenance release: archive fixes, maintainer-script path sanitization, and SellWren integration links.**
+
+### Fixed
+- **`etsy-seller.skill` Archive Regression:** The v2.1.0 archive accidentally dropped the `state-templates/` directory that v2.0.2 added — zip installs hit first-run bootstrap template errors. Rebuilt with `skill/` + `state-templates/` (25 entries).
+- **`sync_etsy_policy.py` Path Fix:** Replaced hardcoded maintainer machine paths with auto-detection (repo-relative with `ESVG_REPO`/`SELLER_REPO` env overrides). The script now works from any clone location and rebuilds both skill archives on sync.
+- **Archive Rebuild on Sync:** The sync engine now also rebuilds `etsy-seller.skill` when rulebooks change, preventing future archive drift.
+
+### Added
+- **🛠️ SellWren Integration:** New "Related: SellWren" section — the free point-and-click Etsy tools (Tag Verifier, Title Builder, IP Scanner, Description Builder) and live shop dashboard built on the same rulebooks by the same team. See README and INSTALL for links.
+
+---
+
 ## [2.1.0] — July 2026
 
 **Major update introducing Caveman Output Mode and 5 Immutable System Laws across Full Skill and Portable editions.**

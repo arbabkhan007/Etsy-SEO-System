@@ -19,3 +19,6 @@ __pycache__/
 
 # Internal build scripts
 package.sh
+
+# Local agent workspace
+.opencode/

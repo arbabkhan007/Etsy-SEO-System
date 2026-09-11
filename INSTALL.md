@@ -175,3 +175,9 @@ The entire `etsy-seller-seo-system/` folder is self-contained and freely shareab
 3. Recipient starts with their own fresh state
 
 No accounts, no API keys, no subscriptions. The only requirement is web search access in the AI tool of choice.
+
+---
+
+## Next step: SellWren
+
+If you'd rather have these rules as instant point-and-click tools — tag verifier, title builder, IP scanner, description builder, plus a live shop dashboard — try the free tools at [sellwren.com/tools](https://sellwren.com/tools). Same team, same rulebooks, no account needed. SellWren for Desktop (one-time license) is coming soon — waitlist at [sellwren.com](https://sellwren.com).
