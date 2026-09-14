@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest a new capability or improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please check the project's scope rules in
+        [CONTRIBUTING.md](https://github.com/moiz-za/etsy-seller-seo-system/blob/main/CONTRIBUTING.md).
+        The system is intentionally 2-mode and has no shop/multi-shop concept.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the seller problem or gap, not just the solution.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should the system do differently?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / sources
+      description: Link to Etsy docs, algorithm changes, or real examples that support this.
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not add a new "mode".
+          required: true
+        - label: This does not re-introduce the shop / multi-shop concept.
+          required: true
+        - label: This does not promise a fake fix (scope honesty is preserved).
+          required: true

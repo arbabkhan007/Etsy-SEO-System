@@ -1,0 +1,80 @@
+name: Bug report
+description: Report something that is broken or producing wrong output
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please search
+        [existing issues](https://github.com/moiz-za/etsy-seller-seo-system/issues)
+        first.
+
+        Do **not** report security vulnerabilities here — see
+        [SECURITY.md](https://github.com/moiz-za/etsy-seller-seo-system/blob/main/SECURITY.md).
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Edition
+      description: Which edition of the system are you using?
+      options:
+        - Skill (Claude / Cowork)
+        - Portable prompt (ChatGPT / Perplexity / Gemini)
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Found in the badge at the top of the README or in CHANGELOG.md
+      placeholder: "e.g. 2.1.1"
+    validations:
+      required: true
+  - type: input
+    id: ai-tool
+    attributes:
+      label: AI tool and model
+      placeholder: "e.g. Claude Sonnet 4.5, ChatGPT 5, Gemini 2.5 Pro"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Paste this listing: ...
+        2. Ask for ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example input / output (sanitized)
+      description: Remove any real shop name, shop ID, or personal data before pasting.
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I removed any private shop data from this report.
+          required: true

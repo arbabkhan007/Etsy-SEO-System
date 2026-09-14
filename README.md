@@ -9,6 +9,7 @@
 [![Schema](https://img.shields.io/badge/schema-2.1-blue?style=flat-square)](skill/references/data-model/SCHEMA.md)
 [![Policy](https://img.shields.io/badge/Etsy_policy-August_2026-green?style=flat-square)](skill/references/policies.md)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](#-contributing)
+[![Discussions](https://img.shields.io/badge/community-discussions-blueviolet?style=flat-square)](https://github.com/moiz-za/etsy-seller-seo-system/discussions)
 [![Status](https://img.shields.io/badge/status-stable-success?style=flat-square)]()
 
 **Honest, evidence-driven Etsy SEO optimization for AI tools.** Paste a listing → get back an optimized one. No shop registration, no setup forms, no nonsense.
@@ -348,6 +349,8 @@ See full [CHANGELOG.md](./CHANGELOG.md) for details.
 
 This system is opinionated and built around the 2026 Etsy algorithm. If Etsy changes its rules (and it will), this needs updates. Welcome contributions:
 
+> **Questions or ideas?** Start a thread in [GitHub Discussions](https://github.com/moiz-za/etsy-seller-seo-system/discussions) — it's the fastest place to get help and share results.
+
 - Updates to `skill/references/seo-guide.md` for algorithm changes
 - Updates to `skill/references/policies.md` for policy changes
 - Additions to `skill/references/playbooks/trademark-stoplist.md` for newly trademarked franchises
@@ -359,6 +362,8 @@ Avoid:
 - Adding new "modes" — the system is intentionally 2-mode
 - Re-introducing shop concept / multi-shop architecture
 - Anything that violates the scope-honesty principle (no fake-fixes)
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide, and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for community expectations. To report a security issue, follow [SECURITY.md](./SECURITY.md) — never a public issue.
 
 ---
 

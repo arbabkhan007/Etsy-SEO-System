@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and support
+    url: https://github.com/moiz-za/etsy-seller-seo-system/discussions/categories/q-a
+    about: Ask a question or get help using the system.
+  - name: Ideas and feedback
+    url: https://github.com/moiz-za/etsy-seller-seo-system/discussions/categories/ideas
+    about: Share ideas and discuss them with the community.
+  - name: Show and tell
+    url: https://github.com/moiz-za/etsy-seller-seo-system/discussions/categories/show-and-tell
+    about: Share what you built or how the system worked for you.
+  - name: Report a security vulnerability
+    url: https://github.com/moiz-za/etsy-seller-seo-system/security/advisories/new
+    about: Privately report a security issue. Do not use public issues.
