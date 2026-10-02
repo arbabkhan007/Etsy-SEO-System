@@ -128,6 +128,8 @@ https://www.etsy.com/search?q=[phrase]
 ```
 Extract: top 10 organic listing titles (skip "Ad by" entries), related searches, total results count. Identify 2–3 word phrases appearing across multiple top-10 titles.
 
+Optional traceable source: see `references/data-source-apify-etsy-search.md`.
+
 **4C — Competition difficulty assessment:**
 
 | Results count | Ad density (first 8) | Classification |
