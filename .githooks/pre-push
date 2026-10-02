@@ -3,16 +3,24 @@
 # Enable once per clone:  git config core.hooksPath .githooks
 
 PATTERNS='Eighty9Crafts|ZPSCrafts|57438369|moiz-shop-intelligence|ETSY_SHOP_ID|lonelyscorpio|/Users/moiz'
+EMPTY_TREE=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 
 while read local_ref local_sha remote_ref remote_sha; do
   # Determine the range of commits being pushed
-  if git cat-file -e "$remote_sha" 2>/dev/null; then
+  if git cat-file -e "${remote_sha}^{commit}" 2>/dev/null; then
     RANGE="$remote_sha..$local_sha"
   else
-    RANGE="$local_sha"
+    # New branch / first push / fork: the remote commit is absent, so scan the
+    # whole tree at local_sha rather than silently scanning nothing.
+    RANGE="$EMPTY_TREE..$local_sha"
   fi
 
-  FILES=$(git diff --name-only --diff-filter=ACMRT "$RANGE" 2>/dev/null | grep -v '^etsy-seller\.skill$' | grep -vE '^\.githooks/|^\.github/workflows/leak-guard' || true)
+  if ! RAW=$(git diff --name-only --diff-filter=ACMRT "$RANGE"); then
+    echo "❌ Leak Guard: git diff failed for '$RANGE' — blocking push (fail-closed)." >&2
+    exit 1
+  fi
+
+  FILES=$(printf '%s\n' "$RAW" | grep -v '^etsy-seller\.skill$' | grep -vE '^\.githooks/|^\.github/workflows/leak-guard' || true)
   [ -z "$FILES" ] && continue
 
   for f in $FILES; do

@@ -17,8 +17,5 @@ __pycache__/
 *.swp
 *~
 
-# Internal build scripts
-package.sh
-
 # Local agent workspace
 .opencode/

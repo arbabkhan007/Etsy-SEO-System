@@ -4,9 +4,9 @@ A free, evidence-driven **Etsy SEO tool** for AI assistants. It optimizes Etsy l
 
 **Quick start:** paste [`portable/Etsy_Listing_System_Instructions.md`](./portable/Etsy_Listing_System_Instructions.md) into any AI chat as your first message, then send your listing. Installing the Claude skill takes three commands — see [Installation](#installation).
 
-[![Version](https://img.shields.io/badge/version-2.1.1-blue?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.2-blue?style=flat-square)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
-[![Etsy policy](https://img.shields.io/badge/Etsy_policy-August_2026-green?style=flat-square)](skill/references/policies.md)
+[![Etsy policy](https://img.shields.io/badge/Etsy_policy-2026-green?style=flat-square)](skill/references/policies.md)
 [![Stars](https://img.shields.io/github/stars/moiz-za/etsy-seller-seo-system?style=flat-square&label=stars)](https://github.com/moiz-za/etsy-seller-seo-system/stargazers)
 [![Forks](https://img.shields.io/github/forks/moiz-za/etsy-seller-seo-system?style=flat-square&label=forks)](https://github.com/moiz-za/etsy-seller-seo-system/forks)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
@@ -68,7 +68,7 @@ Non-bypassable execution discipline (`skill/references/playbooks/system-laws.md`
 ### Trademark and Policy Guard
 
 - Flags trademarked words before a listing is taken down.
-- Checks Etsy's current 2026 policies each session through the automated dual-repo policy sync engine (`skill/scripts/sync_etsy_policy.py`).
+- Checks Etsy's current 2026 policies each session via live web search (Phase 2), with a maintainer dual-repo sync engine (`skill/scripts/sync_etsy_policy.py`) that keeps the rulebooks aligned.
 - Platform fit check on saturated niches (over 100K results) before a listing is built.
 
 ### Honest Scope Diagnosis
@@ -111,8 +111,12 @@ This is an Etsy SEO tool, and it does Etsy SEO well. If Etsy SEO is the only pro
 ```bash
 git clone https://github.com/moiz-za/etsy-seller-seo-system.git
 cd etsy-seller-seo-system
-cp -r skill ~/.claude/skills/etsy-seller
+mkdir -p ~/.claude/skills/etsy-seller
+cp -r skill/. ~/.claude/skills/etsy-seller/
+cp -r state-templates ~/.claude/skills/etsy-seller/
 ```
+
+> Prefer a one-step install? Download `etsy-seller.skill` from the [latest release](https://github.com/moiz-za/etsy-seller-seo-system/releases/latest) and unzip it into `~/.claude/skills/etsy-seller/` — the archive bundles the skill and the state templates.
 
 Restart Claude. On the first listing input, the skill creates `~/etsy-listings/` and begins tracking. No file management is required.
 
@@ -232,17 +236,27 @@ etsy-seller-seo-system/
 ├── INSTALL.md                  ← step-by-step setup per AI tool
 ├── CHANGELOG.md                ← version history
 ├── LICENSE                     ← MIT
+├── NOTICE                      ← trademark attribution
+├── CODE_OF_CONDUCT.md          ← community expectations
+├── CONTRIBUTING.md             ← contribution guide
+├── SECURITY.md                 ← vulnerability reporting
+├── etsy-seller.skill           ← packaged skill (attached to releases)
+│
+├── .github/                    ← CI workflows + issue/PR templates
+├── .githooks/                  ← pre-push leak guard
+├── scripts/                    ← maintainer policy-sync / archive build
 │
 ├── skill/                      ← drop into ~/.claude/skills/etsy-seller/
 │   ├── SKILL.md                ← the orchestrator (2 modes + auto-detect)
 │   ├── scripts/
 │   │   ├── bootstrap.py        ← silent state init on first run
-│   │   └── sync_etsy_policy.py ← dual-repo policy sync engine
+│   │   ├── sync_etsy_policy.py ← dual-repo sync + archive build
+│   │   └── README.md
 │   └── references/
 │       ├── data-model/SCHEMA.md ← state file formats
 │       ├── listing-guide.md     ← title/tag/attribute/description rules
 │       ├── seo-guide.md         ← 2026 Etsy algorithm details
-│       ├── policies.md          ← Etsy policies (August 2026)
+│       ├── policies.md          ← Etsy policies (2026)
 │       ├── operations.md        ← fees, Star Seller, cases, diagnostics
 │       ├── pinterest-guide.md   ← Pinterest strategy
 │       └── playbooks/           ← system laws + operational playbooks
@@ -280,7 +294,7 @@ Neither depends on the other; use either independently or together.
 | 13-tag verification (13 tags, 20 characters or fewer, phrase overlap) | **Tag Verifier** |
 | Title checks (primary keyword in first 40 chars, 6–14 words, no subjective words) | **Title Builder** |
 | Trademark stoplist scan | **IP Scanner** |
-| 8-block description format | **Description Builder** |
+| 9-block description format | **Description Builder** |
 
 - **Free tools:** [sellwren.com/tools](https://sellwren.com/tools) — no account, nothing stored.
 - **Live dashboard demo:** [sellwren.com/demo-dashboard](https://sellwren.com/demo-dashboard) — income, winners, listing health, and profit math.
@@ -343,11 +357,13 @@ git config core.hooksPath .githooks
 
 | Version | Date | Summary |
 |---------|------|---------|
-| **2.1.0** | 2026-07 | Caveman Output Mode + 5 Immutable System Laws across skill and portable editions |
-| 2.0.2 | 2026-07 | Etsy August 2026 Creativity Standards update, `.skill` packaging fix, dual-layout bootstrap |
-| 2.0.1 | 2026-05 | Free-tier documentation + GitHub language stats fix |
-| 2.0.0 | 2026-05 | Major restructure: flat listing DB, 2-mode auto-detect, dropped shop concept |
-| 1.1.0 | 2026-05 | Automation scripts, per-intent description hooks, SEO myths debunked |
+| **2.1.2** | October 2026 | Sync & consistency: install-path fix, April 2026 title guidance, CI hardening, rule sync |
+| 2.1.1 | September 2026 | Archive fix, maintainer-script path sanitization, SellWren links, leak guard |
+| 2.1.0 | July 2026 | Caveman Output Mode + 5 Immutable System Laws across skill and portable editions |
+| 2.0.2 | July 2026 | Etsy August 2026 Creativity Standards update, `.skill` packaging fix, dual-layout bootstrap |
+| 2.0.1 | May 2026 | Free-tier documentation + GitHub language stats fix |
+| 2.0.0 | May 2026 | Major restructure: flat listing DB, 2-mode auto-detect, dropped shop concept |
+| 1.1.0 | May 2026 | Automation scripts, per-intent description hooks, SEO myths debunked |
 
 See the full [CHANGELOG.md](./CHANGELOG.md) for details.
 
@@ -366,4 +382,4 @@ Engineered and maintained by **Moiz Zoaib Ali**.
 
 ## License
 
-MIT. Copyright (c) 2026 Moiz Zoaib Ali. Use freely, modify, and share. No warranty. Not affiliated with Etsy, Inc.
+MIT. Copyright (c) 2026 Moiz Zoaib Ali. Use freely, modify, and share. No warranty. Not affiliated with Etsy, Inc. See [NOTICE](./NOTICE) for trademark attribution.

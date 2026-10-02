@@ -1,6 +1,6 @@
 # Data Model SCHEMA
 
-**Schema version:** 2.0 (May 2026)
+**Schema version:** 2.0 (2026)
 
 This document defines the flat-namespace markdown state files the skill reads and writes. There is no shop concept, no registry, no xlsx. All state lives in `~/etsy-listings/` (Claude/Cowork) or as a session snapshot (other AI tools).
 

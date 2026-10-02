@@ -147,7 +147,7 @@ If sales are flat, identify which metric is the actual problem before changing a
 
 | Symptom | Likely cause | Action layer |
 |---|---|---|
-| Zero/near-zero impressions | SEO problem (tags over 20 chars, wrong keyword, miscategorized, IP suppression) | Re-run keyword research (SKILL Phase 3), verify tag chars, check category |
+| Zero/near-zero impressions | SEO problem (tags over 20 chars, wrong keyword, miscategorized, IP suppression) | Re-run keyword research (SKILL Phase 4), verify tag chars, check category |
 | Impressions but CTR < ~1% | Hero image weak / title unclear / price too high | Rewrite hero mockup (NOT skill scope); test lower price |
 | CTR healthy (>1.5%) but conversion < ~1% | Description weak / mockups not specific enough / few reviews / price-value mismatch | Rewrite description Block 2 (Features) and Block 3 (What's Included); add more mockup photos |
 | Strong conversion but low repeat traffic | Listing only ranks for one narrow query | Add tag variety (different buyer-intent angles); refresh secondary keywords |

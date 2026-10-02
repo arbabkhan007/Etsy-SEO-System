@@ -8,21 +8,39 @@ Pick the section matching your AI tool. Each takes 2–5 minutes.
 
 ### Steps
 
-1. Copy the `skill/` folder to your Claude skills directory:
+1. Get the files — clone the repo, or download `etsy-seller.skill` from the [latest release](https://github.com/moiz-za/etsy-seller-seo-system/releases/latest):
 
-   **macOS / Linux:**
    ```bash
-   cp -r etsy-seller-system/skill ~/.claude/skills/etsy-seller
+   git clone https://github.com/moiz-za/etsy-seller-seo-system.git
+   cd etsy-seller-seo-system
    ```
 
-   **Windows (PowerShell):**
+2. Install the skill **and** the state templates into your Claude skills directory.
+   (`state-templates/` is required — the skill copies it into `~/etsy-listings/` on first run.)
+
+   **macOS / Linux (from the clone):**
+   ```bash
+   mkdir -p ~/.claude/skills/etsy-seller
+   cp -r skill/. ~/.claude/skills/etsy-seller/
+   cp -r state-templates ~/.claude/skills/etsy-seller/
+   ```
+
+   **macOS / Linux (from the release archive):**
+   ```bash
+   mkdir -p ~/.claude/skills/etsy-seller
+   unzip etsy-seller.skill -d ~/.claude/skills/etsy-seller/
+   ```
+
+   **Windows (PowerShell, from the clone):**
    ```powershell
-   Copy-Item -Recurse etsy-seller-system\skill $env:USERPROFILE\.claude\skills\etsy-seller
+   New-Item -ItemType Directory -Force $env:USERPROFILE\.claude\skills\etsy-seller | Out-Null
+   Copy-Item -Recurse skill\* $env:USERPROFILE\.claude\skills\etsy-seller
+   Copy-Item -Recurse state-templates $env:USERPROFILE\.claude\skills\etsy-seller
    ```
 
-2. Restart Claude or reload skills. In Cowork: settings → skills → refresh.
+3. Restart Claude or reload skills. In Cowork: settings → skills → refresh.
 
-3. Verify install — start a new conversation and paste an existing Etsy listing:
+4. Verify install — start a new conversation and paste an existing Etsy listing:
 
    ```
    Title: Beautiful Handmade Cat Mom SVG Designs for Cricut and Silhouette
@@ -40,7 +58,7 @@ Pick the section matching your AI tool. Each takes 2–5 minutes.
 
 | Path | Purpose | Managed by |
 |---|---|---|
-| `~/.claude/skills/etsy-seller/` | The skill itself (SKILL.md, scripts, references) | You — update when new version releases |
+| `~/.claude/skills/etsy-seller/` | The skill itself (SKILL.md, scripts, references, state-templates) | You — update when new version releases |
 | `~/etsy-listings/` | Your listing database | Skill — auto-created on first run, auto-updated thereafter |
 
 The two are separate so you can update the skill without losing your listing history.
@@ -137,10 +155,10 @@ Same manual session-snapshot pattern as ChatGPT.
 
 ## Updating to a new version
 
-When a new release of `etsy-seller-system` comes out:
+When a new release of `etsy-seller-seo-system` comes out:
 
 **Claude / Cowork users:**
-1. Replace the contents of `~/.claude/skills/etsy-seller/` with the new `skill/` folder
+1. Replace the contents of `~/.claude/skills/etsy-seller/` with the new `skill/` + `state-templates/` contents (or unzip the new `etsy-seller.skill` into it)
 2. Your `~/etsy-listings/` state is preserved automatically
 3. Check `CHANGELOG.md` for any schema version bumps — rare, but if schema changes you may need to migrate state files
 

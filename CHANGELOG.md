@@ -4,6 +4,30 @@ All notable changes to the Etsy Seller System.
 
 Schema versions are bumped only when state file formats change in ways that require migration.
 
+## [2.1.2] — October 2026
+
+**Sync & consistency release: repo-wide audit fixes, install-path correction, Etsy April 2026 title guidance, and CI hardening. State schema remains 2.0.**
+
+### Fixed
+- **Install path (Claude/Cowork):** the documented `cp -r skill …` install copied only `skill/`, so `bootstrap.py` could not find `state-templates/` and `~/etsy-listings/` was never auto-created. Install steps now copy both folders, include the missing `git clone` step, and document the packaged `.skill` download.
+- **Archive rebuild:** `sync_etsy_policy.py` only rebuilt `etsy-seller.skill` during a cross-repo sync. Added a `--build` mode that rebuilds it deterministically from `skill/` + `state-templates/` with no sibling repo, plus an **Archive Check** CI job that fails if the zip drifts from source.
+- **Leak Guard:** first-push/new-branch pushes scanned nothing (a single-commit `git diff`) and diff errors were swallowed. Both the workflow and `.githooks/pre-push` now diff against the empty tree and fail closed.
+- **Rule sync (skill ⇄ portable):** portable subjective-words stoplist expanded to the canonical 17; phrase-overlap rule aligned to "2+ word"; title word-count guardrail stated consistently (6–12, max 14); added the "no foreign-language tags" rule.
+- **Stale references:** removed pointers to the long-deleted `renewal-timing.md`, `shop-profile.md`, `target_markets` field, and the `Shop_Master.xlsx` mirror; corrected a `listing-guide.md` relative path.
+- **Phase / MODE drift:** corrected keyword-research references from the old Phase 3 to the current Phase 4 (and subphases 4A–4F), fixed Phase 2→3 and Phase 5→7 references, and reworded orphaned MODE 3–8 references (only Modes 1–2 exist).
+- **Description structure:** corrected the mislabeled "8-block" description to the canonical **9-block** structure everywhere.
+
+### Added
+- **Etsy title guidance (April 2026):** new `seo-guide.md` / `policies.md` material reflecting Etsy's April 27, 2026 Seller Handbook "New Guidance for Listing Titles" (state the item once; top-3 descriptors color/material/size; holidays only if essential; avoid aspirational/gifting phrase repetition; move subjective words to tags/attributes; remove sales/shipping) plus the new AI title tool.
+- **Archive Check workflow** and deterministic `.skill` packaging.
+- **`NOTICE`** now referenced from the README License section.
+
+### Changed
+- **Policy labeling:** references now use "Etsy Policies — 2026" with dated updates instead of a single month label.
+- **Version metadata:** README badge / changelog table and the portable edition header aligned to 2.1.2; corrected the `SKILL.md` header that mislabeled the state schema version.
+
+---
+
 ## [2.1.1] — September 2026
 
 **Maintenance release: archive fixes, maintainer-script path sanitization, and SellWren integration links.**
@@ -11,7 +35,7 @@ Schema versions are bumped only when state file formats change in ways that requ
 ### Fixed
 - **`etsy-seller.skill` Archive Regression:** The v2.1.0 archive accidentally dropped the `state-templates/` directory that v2.0.2 added — zip installs hit first-run bootstrap template errors. Rebuilt with `skill/` + `state-templates/` (25 entries).
 - **`sync_etsy_policy.py` Path Fix:** Replaced hardcoded maintainer machine paths with auto-detection (repo-relative with `ESVG_REPO`/`SELLER_REPO` env overrides). The script now works from any clone location and rebuilds both skill archives on sync.
-- **Archive Rebuild on Sync:** The sync engine now also rebuilds `etsy-seller.skill` when rulebooks change, preventing future archive drift.
+- **Archive Rebuild on Sync:** The sync engine now rebuilds both skill archives when it detects cross-repo rulebook drift.
 
 ### Added
 - **🛠️ SellWren Integration:** New "Related: SellWren" section — the free point-and-click Etsy tools (Tag Verifier, Title Builder, IP Scanner, Description Builder) and live shop dashboard built on the same rulebooks by the same team. See README and INSTALL for links.
@@ -126,7 +150,6 @@ Automation + minimal-friction input contract + overview PDF.
 - listing-guide.md §2: added "200 results vs 50M" illustration
 - listing-guide.md §4 Block 1: per-intent description hook templates
 - seo-guide.md §12: Common Myths section debunking outdated SEO advice
-- 14-page Etsy_Seller_System_Overview.pdf
 
 ---
 
@@ -148,10 +171,9 @@ Initial release. Full 8-mode shop intelligence system.
 
 ## Roadmap (potential future versions)
 
-### v2.1 (not committed)
+### v2.x (exploratory)
 - First-run quick-start tutorial
 - "Why this matters" educational notes in rationale outputs
-- Rebuilt PDF overview reflecting v2.0 architecture
 
 ### v3.0 (speculative)
 - Integration with Etsy Open API (if Etsy makes it more accessible to sellers)

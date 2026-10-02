@@ -6,7 +6,7 @@ description: >
 
 # Etsy Seller — SEO Optimization System
 
-**Schema version:** 2.1 · **Policy version:** August 2026 (Featuring System Laws & Caveman Output Protocol)
+**Schema version:** 2.0 · **Policy version:** 2026 (Featuring System Laws & Caveman Output Protocol)
 
 ---
 
@@ -16,8 +16,8 @@ All phase executions MUST strictly enforce `references/playbooks/system-laws.md`
 
 1. **Immutable Operational Integrity:** Execute Mode 1 (Rewrite) and Mode 2 (New Listing) workflows, difficulty assessments, SERP checks, and listing output phases sequentially without skipping.
 2. **Zero-Hallucination Evidence Traceability:** Autocomplete phrases and competitor stats MUST trace to live search data or explicitly tag `[Data Source: Reasoning Engine Fallback]`.
-3. **Mandatory 20-Character Tag Limit & Overlap Rules:** Exactly 13 tags, every tag ≤20 chars (including spaces), no exact 2-word phrase shared across >2 tags, zero emojis/special symbols in tags.
-4. **Caveman Output Protocol:** Crisp, bullet-first, token-efficient outputs by default; full raw SERP breakdowns unlocked on demand (`"expand"`, `"full report"`).
+3. **Mandatory 20-Character Tag Limit & Overlap Rules:** Exactly 13 tags, every tag ≤20 chars (including spaces), no exact 2+ word phrase shared across more than 2 tags, zero emojis/special symbols in tags.
+4. **Caveman Output Protocol:** Crisp, bullet-first, token-efficient outputs by default; full raw SERP breakdowns unlocked on demand (`"expand"`, `"full report"`, `"show details"`).
 5. **Strict Listing Format & No-Emoji Mandate:** Mandatory Title Formula (`[Primary Keyword] [Style Descriptor] | [Format]`), Title Word Count (6–12 words, max 14), Prohibited Subjective Words Stoplist (`cute`, `beautiful`, etc.), zero emojis in description text or section headers, Etsy 2026 AI Disclosure, Hero Alt Text, and Pinterest Marketing Block.
 
 ---
@@ -179,7 +179,7 @@ Build the listing per rules in `references/listing-guide.md`:
 - **Title:** primary keyword in first 40 chars; 6–12 words; natural language, NO comma-chain keyword stuffing; ≤140 chars total; no trademarked words; no subjective adjectives (beautiful, perfect, stunning, amazing, incredible)
 - **Tags:** 13 of 13; every tag ≤20 chars including spaces; every tag traces to autocomplete/SERP/expansion evidence; every tag passes phrase-coherence check ("would a buyer type this verbatim?"); primary niche noun may repeat in 2–3 tags but no exact 2+ word phrase repeats
 - **Attributes:** Style, Occasion, Recipient values match Phase 4 buyer-language phrases; at least one attribute value echoes a primary-cluster word
-- **Description:** 8-block structure (Hook → Features → What's Included → Delivery → Compatibility → Usage Rights → Personalization → AI Disclosure → Closing); primary keyword in first 40 chars; meta zone (first 160 chars) is a complete product pitch using the intent-appropriate hook template; 250–700 words; no "Thank you for visiting" / "This listing is for" openers
+- **Description:** 9-block structure (Hook → Features → What's Included → Delivery → Compatibility → Usage Rights → Personalization → AI Disclosure → Closing); primary keyword in first 40 chars; meta zone (first 160 chars) is a complete product pitch using the intent-appropriate hook template; 250–700 words; no "Thank you for visiting" / "This listing is for" openers
 - **Category:** most specific subcategory available
 - **Hero image alt text:** 100–150 chars, includes primary keyword
 - **Pinterest block:** pin title (inspiration framing for digital / lifestyle for physical, primary keyword in first 40 chars, ≤100 chars), board name (25–40 chars), board description (150–300 chars), pin description (220–232 chars, no hashtags, no "link in bio" language), keyword sync block
@@ -256,7 +256,7 @@ Style: [value]    Occasion: [value]    Recipient: [value]    File Type: [extract
 DESCRIPTION:
 [Meta zone — first 160 chars: "..."] ✅
 
-[Full 8-block description here]
+[Full 9-block description here]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INDEXING SPREAD ✅  ·  KEYWORD REUSE ✅ (no overlap with existing listings)
@@ -279,7 +279,7 @@ BEFORE YOU PUBLISH — copy-paste checklist
 □ Re-run skill at day 14 to check impressions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Want more detail? Reply "show full" for:
+Want more detail? Reply "show details" for:
 - Full Phase 4 evidence log (autocomplete seeds, SERP common phrases, source per tag)
 - Pinterest block (pin title, board, description, alt text, image brief, video brief)
 - Health score (0–100, component breakdown)
@@ -397,7 +397,7 @@ Parse rows, identify REWRITE vs CREATE per row, process sequentially. Apply keyw
 
 ### Core references (load once per session if working on listings)
 - `references/listing-guide.md` — title / tag / attribute / description rules
-- `references/seo-guide.md` — May 2026 algorithm details, ranking factors, CTR-SEO loop, no-impressions diagnostic, common myths
+- `references/seo-guide.md` — 2026 algorithm details, ranking factors, CTR-SEO loop, no-impressions diagnostic, common myths
 - `references/policies.md` — universal Etsy policies (creativity standards, IP, prohibited items, audit checklist)
 - `references/operations.md` — fees, Star Seller mechanics, cases, metric diagnostic
 - `references/pinterest-guide.md` — Pinterest strategy + output block

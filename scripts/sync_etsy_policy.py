@@ -9,6 +9,7 @@ Maintainer utility — not needed for normal skill usage. Auto-detects both repo
 when cloned side by side; override locations with ESVG_REPO / SELLER_REPO env vars.
 """
 
+import argparse
 import os
 import sys
 import shutil
@@ -155,19 +156,33 @@ def rebuild_seller_package():
     if output.exists():
         output.unlink()
 
+    # Deterministic archive: fixed timestamp + sorted entries, so the byte
+    # output is reproducible and CI can verify the committed archive matches
+    # the source tree.
+    fixed_time = (1980, 1, 1, 0, 0, 0)
+
+    def add_file(z, fp, arcname):
+        info = zipfile.ZipInfo(arcname, date_time=fixed_time)
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o644 << 16
+        with open(fp, 'rb') as fh:
+            z.writestr(info, fh.read())
+
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as z:
         for root, dirs, files in os.walk(REPO_SELLER / 'skill'):
-            for f in files:
+            dirs.sort()
+            for f in sorted(files):
                 fp = Path(root) / f
                 if f in SKIP_NAMES or f.endswith(('.pyc', '.pyo')):
                     continue
-                z.write(fp, arcname=str(fp.relative_to(REPO_SELLER / 'skill')))
+                add_file(z, fp, str(fp.relative_to(REPO_SELLER / 'skill')))
         for root, dirs, files in os.walk(REPO_SELLER / 'state-templates'):
-            for f in files:
+            dirs.sort()
+            for f in sorted(files):
                 fp = Path(root) / f
                 if f in SKIP_NAMES or f.endswith(('.pyc', '.pyo')):
                     continue
-                z.write(fp, arcname=str(fp.relative_to(REPO_SELLER)))
+                add_file(z, fp, str(fp.relative_to(REPO_SELLER)))
 
     print(f"✅ Rebuilt etsy-seller.skill ({REPO_SELLER.name}: skill/ + state-templates/)")
 
@@ -204,5 +219,18 @@ def rebuild_packages():
     rebuild_esvg_package()
 
 
+def main():
+    parser = argparse.ArgumentParser(
+        description="Etsy policy dual-repo sync + packaged-skill build.")
+    parser.add_argument(
+        '--build', action='store_true',
+        help="Rebuild etsy-seller.skill from skill/ + state-templates/ without cross-repo sync.")
+    args = parser.parse_args()
+    if args.build:
+        rebuild_seller_package()
+    else:
+        sync_files()
+
+
 if __name__ == '__main__':
-    sync_files()
+    main()

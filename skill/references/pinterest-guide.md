@@ -95,7 +95,7 @@ Always reframe based on actual product type. Never force "DIY" framing onto a fi
 
 Like Etsy tags, pin titles must use phrases that appear in real Pinterest search. Quick check before output:
 - Search the candidate primary phrase on Pinterest (pinterest.com/search/?q=...) — count "Tried it" pins and saves on the top results. High engagement = active search demand.
-- Use the same keyword cluster identified in Phase 3 of SKILL.md research — reframed for Pinterest intent.
+- Use the same keyword cluster identified in Phase 4 of SKILL.md research — reframed for Pinterest intent.
 
 ---
 
@@ -174,7 +174,7 @@ Board names are generated dynamically from the detected niche. The formula:
 | Christian Faith | "Faith" | "Christian Gift Ideas DIY" | 24 ✅ |
 | Retro Gamer | "Games" | "Retro Gamer Gift Ideas" | 22 ✅ |
 
-**Rule:** Use the same niche keyword detected in SKILL Phase 2 as the anchor of the board name. Add a purpose word (Gift Ideas, Craft Ideas, DIY, Decor, Printables) that matches Pinterest user search intent. Always verify char count.
+**Rule:** Use the same niche keyword detected in SKILL Phase 3 as the anchor of the board name. Add a purpose word (Gift Ideas, Craft Ideas, DIY, Decor, Printables) that matches Pinterest user search intent. Always verify char count.
 
 ### Board Description Template
 ```
@@ -185,12 +185,12 @@ including [specific examples]. Perfect for [occasion or use-case].
 
 **Example — dynamic board description for any niche:**
 `SVG files and Cricut project ideas for [niche audience]. Find [style] designs, clipart bundles, and DIY [product type] ideas perfect for Cricut, Silhouette, and [relevant use case].`
-*(adapt to detected niche — 150–200 chars target)*
+*(adapt to detected niche — 150–300 chars target)*
 
 ### Board Rules
 - One board per niche — never mix niches in one board
 - Each listing pinned to its most relevant niche board
-- Board name derived from the niche detected in SKILL Phase 2
+- Board name derived from the niche detected in SKILL Phase 3
 - Do NOT repin the same image to the same board — treated as spam in 2026
 - Build boards as you create listings — one board per niche, maintained consistently
 - Group boards: only join high-quality ones (≥50 active contributors, recent activity) — low-quality group boards hurt account-wide reach
@@ -222,7 +222,7 @@ IMAGE BRIEF:
 - **Digital products:** Never show just the file — show what the buyer will MAKE with it (shirt, mug, tote bag, wall art, etc.). Lifestyle mockup mandatory.
 - **Physical products:** Show the actual product in real lifestyle context — being worn, used, displayed. Avoid product-on-white as the pin image.
 - **Text overlay:** reinforces keyword to algorithm AND grabs attention in feed. Use the primary keyword or the most clickable benefit phrase.
-- **Alt text:** must include the primary keyword (this is part of the indexing spread check — see SKILL.md Phase 5). The pin's alt text should be the same as or closely match the hero image alt text on the Etsy listing for compound SEO.
+- **Alt text:** must include the primary keyword (this is part of the indexing spread check — see SKILL.md Phase 7). The pin's alt text should be the same as or closely match the hero image alt text on the Etsy listing for compound SEO.
 
 ---
 
@@ -253,7 +253,7 @@ Create seasonal pin variants 4–6 weeks before major holidays. Same listing URL
 Use the same core keyword vocabulary in both platforms, framed differently for each platform's intent.
 
 ### Sync Process
-1. Take the primary keyword from the Etsy listing (from SKILL.md Phase 3 research — autocomplete/SERP evidence)
+1. Take the primary keyword from the Etsy listing (from SKILL.md Phase 4 research — autocomplete/SERP evidence)
 2. Reframe it for Pinterest inspiration intent (digital) or lifestyle intent (physical)
 3. Use the same underlying keyword cluster in both — same words, different sentence structure
 4. Google indexes both — compound ranking signal
@@ -267,7 +267,7 @@ Shared cluster: [kw1], [kw2], [kw3]
 ```
 
 ### Indexing Spread Implication (NEW)
-The Pinterest hero image alt text should match or closely echo the Etsy hero image alt text. This is part of the cross-surface indexing spread check defined in SKILL.md Phase 5 — primary keyword cluster appearing in both Etsy hero alt text AND Pinterest pin alt text creates compound external-traffic SEO benefit on Etsy.
+The Pinterest hero image alt text should match or closely echo the Etsy hero image alt text. This is part of the cross-surface indexing spread check defined in SKILL.md Phase 7 — primary keyword cluster appearing in both Etsy hero alt text AND Pinterest pin alt text creates compound external-traffic SEO benefit on Etsy.
 
 ---
 

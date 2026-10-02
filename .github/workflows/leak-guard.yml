@@ -20,20 +20,31 @@ jobs:
 
       - name: Scan changed files for private data
         run: |
-          set -e
+          set -euo pipefail
+          EMPTY_TREE=4b825dc642cb6eb9a060e54bf8d69288fbee4904
           # Determine the range of commits to scan
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
           else
-            RANGE="${{ github.event.before }}..${{ github.sha }}"
-            # Force-push or first push fallback: scan everything in this commit
-            if ! git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
-              RANGE="${{ github.sha }}"
-            fi
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
           fi
-
+          # First push / new branch / force-push: base object absent, so scan
+          # against the empty tree instead of silently scanning nothing.
+          if ! git cat-file -e "${BASE}^{commit}" 2>/dev/null; then
+            echo "Base '$BASE' not present — scanning against the empty tree."
+            BASE="$EMPTY_TREE"
+          fi
+          RANGE="$BASE..$HEAD"
           echo "Scanning range: $RANGE"
-          FILES=$(git diff --name-only --diff-filter=ACMRT "$RANGE" 2>/dev/null | grep -v '^etsy-seller\.skill$' | grep -vE '^\.githooks/|^\.github/workflows/leak-guard' || true)
+
+          # Fail closed: if the diff cannot be computed, do not pass.
+          if ! RAW=$(git diff --name-only --diff-filter=ACMRT "$RANGE"); then
+            echo "::error::git diff failed for range '$RANGE' — failing closed."
+            exit 1
+          fi
+          FILES=$(printf '%s\n' "$RAW" | grep -v '^etsy-seller\.skill$' | grep -vE '^\.githooks/|^\.github/workflows/leak-guard' || true)
 
           if [ -z "$FILES" ]; then
             echo "No scannable text files changed."

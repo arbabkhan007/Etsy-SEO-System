@@ -23,7 +23,7 @@ This playbook establishes the non-bypassable **5 Immutable System Laws** governi
   - Zero emojis or special symbols in tags.
   - Output character count verification per tag (`[Tag] ([X] chars ✅)`).
 
-### 🦣 Law 4: Caveman Output Protocol & Token Efficiency
+### 🦣 Law 4: Caveman Output Protocol
 - **Directive:** Output responses MUST be concise, high-density, bullet-first, and zero-fluff ("Caveman Mode") to minimize token consumption while maintaining 100% analytical depth in local session memory (`~/etsy-listings/`).
 - **Rule:** Strip conversational preamble, repetitive introductions, and excessive prose by default. Full raw SERP breakdowns or multi-column data matrices MUST remain preserved in state memory and rendered only when explicitly requested by the user (`"expand"`, `"full report"`, `"show details"`).
 
@@ -34,7 +34,7 @@ This playbook establishes the non-bypassable **5 Immutable System Laws** governi
   - **Title Word Limit:** 6 to 12 words (ABSOLUTE MAXIMUM: 14 words; reject titles with 15+ words).
   - **Prohibited Subjective Words Stoplist (ZERO ALLOWED):** `cute`, `adorable`, `beautiful`, `perfect`, `stunning`, `amazing`, `incredible`, `pretty`, `awesome`, `gorgeous`, `lovely`, `sweet`, `unique`, `best`, `top`, `wonderful`, `charming`.
   - **No-Emoji Mandate:** Zero emojis allowed in description text or section headers (prevents spam signals and ensures screen-reader accessibility).
-  - **Mandatory Sections:** Meta zone (first 160 chars), Included Formats, Compatibility, Usage License, Etsy 2026 AI Creation Disclosure, Hero Alt Text, and Pinterest Marketing Block.
+  - **Mandatory Sections:** Meta zone (first 160 chars), Included Formats, Compatibility, Usage License, Etsy 2026 AI Disclosure, Hero Alt Text, and Pinterest Marketing Block.
 
 ---
 
@@ -43,5 +43,5 @@ Any execution exhibiting the following defects violates the System Laws and MUST
 - ❌ Outputting tags over 20 characters in length.
 - ❌ Outputting subjective filler words (`cute`, `stunning`, `perfect`) in titles.
 - ❌ Using emojis in listing description text or section headers.
-- ❌ Omitting the Etsy AI Creation Disclosure settings.
+- ❌ Omitting the Etsy AI Disclosure settings.
 - ❌ Outputting bloated, conversational prose when Caveman Mode is active.

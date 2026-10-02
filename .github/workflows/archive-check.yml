@@ -1,0 +1,28 @@
+name: Archive Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Rebuild packaged skill and verify it matches source
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_etsy_policy.py --build
+          if ! git diff --quiet -- etsy-seller.skill; then
+            echo "::error file=etsy-seller.skill::etsy-seller.skill is out of date with skill/ + state-templates/. Run 'python3 scripts/sync_etsy_policy.py --build' and commit the result."
+            git --no-pager diff --stat -- etsy-seller.skill || true
+            exit 1
+          fi
+          echo "✅ etsy-seller.skill matches its source."
