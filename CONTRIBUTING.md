@@ -55,11 +55,18 @@ paths. CI runs the same scan on every push and pull request.
 | `skill/` | The Claude/Cowork skill: `SKILL.md`, references, playbooks, scripts |
 | `portable/` | Single-file prompt edition for ChatGPT / Perplexity / Gemini |
 | `state-templates/` | Starter files copied into a seller's local state |
-| `scripts/` | Policy-sync helper |
+| `scripts/` | Policy-sync helper + archive build |
 | `.github/` | Workflows, issue/PR templates |
 
-If you edit a reference or playbook, keep the `skill/` copy and any packaged
-`.skill` archive in sync, and update cross-references if a path changes.
+If you edit anything under `skill/`, rebuild the packaged archive before
+committing and update cross-references if a path changes:
+
+```bash
+python3 scripts/sync_etsy_policy.py --build   # rebuilds etsy-seller.skill
+```
+
+Commit the rebuilt `etsy-seller.skill` alongside your change — the **Archive
+Check** CI job fails if the committed archive differs from the source tree.
 
 ## Style and conventions
 
